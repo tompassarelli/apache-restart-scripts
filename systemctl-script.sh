@@ -1,7 +1,7 @@
 #!/bin/bash
 HTTP_STATUS = systemctl show httpd | grep StatusText | cut -d "=" -f2
 
-if [ $HTTP_STATUS != Running ]; then
+if [ $HTTP_STATUS != "Running" ]; then
   systemctl restart httpd
   systemctl restart php-fpm
   systemctl restart mysqld

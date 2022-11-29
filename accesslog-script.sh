@@ -14,8 +14,8 @@ tail -100 ${MY_APACHE_LOG} | awk '($9 ~ /500/)' | > ${CHECK_LOG};
 tail -100 ${MY_APACHE_LOG} | awk '($9 ~ /503/)' | > ${CHECK_LOG};
 
  
-ERRORS = $(cat $CHECK_LOG | tail -10)
-ERROR_COUNT = $($LAST_ERRORS | wc -1)
+ERRORS = $(cat $CHECK_LOG | tail -11)
+ERROR_COUNT = $($LAST_ERRORS | wc -l)
 if [ $ERRORS gt 10 ] 
   systemctl restart httpd
   systemctl restart php-fpm
